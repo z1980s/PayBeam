@@ -86,24 +86,36 @@ public class MenuActivity extends AppCompatActivity
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .show(paymentFragment)
                     .commit();
-            //Intent searchIntent = new Intent(MainActivity.this,PaymentImpl.class);
-            //startActivity(searchIntent);
-            // PaymentImpl payment = new PaymentImpl();
-            //payment.action();
-            // return true;
+
         } else if (id == R.id.nav_cards) {
-            /*Toast.makeText(this,"This is cards",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"This is cards",Toast.LENGTH_SHORT).show();
             CardFragment cardFragment = new CardFragment().newInstance("card1", "card2");
             FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_fragment, cardFragment, cardFragment.getTag()).commit();*/
+            manager.beginTransaction().replace(R.id.relativelayout_fragment, cardFragment, cardFragment.getTag()).commit();
 
         } else if (id == R.id.nav_transactions) {
+            Toast.makeText(this,"This is transactions",Toast.LENGTH_SHORT).show();
+            TransactionFragment transactionFragment = new TransactionFragment().newInstance("trans1", "trans2");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_fragment, transactionFragment, transactionFragment.getTag()).commit();
 
         } else if (id == R.id.nav_settings) {
+            Toast.makeText(this,"This is settings",Toast.LENGTH_SHORT).show();
+            SettingsFragment settingsFragment = new SettingsFragment().newInstance("settings1", "settings2");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_fragment, settingsFragment, settingsFragment.getTag()).commit();
 
         } else if (id == R.id.nav_faq) {
+            Toast.makeText(this,"This is faq",Toast.LENGTH_SHORT).show();
+            FaqFragment faqFragment = new FaqFragment().newInstance("faq1", "faq2");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_fragment, faqFragment, faqFragment.getTag()).commit();
 
         } else if (id == R.id.nav_aboutUs) {
+            Toast.makeText(this,"This is aboutus",Toast.LENGTH_SHORT).show();
+            AboutFragment aboutFragment = new AboutFragment().newInstance("about1", "about2");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_fragment, aboutFragment, aboutFragment.getTag()).commit();
 
         }
 

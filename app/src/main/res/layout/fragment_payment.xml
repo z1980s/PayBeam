@@ -6,22 +6,33 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/amount_payable"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="116dp"
+        android:layout_marginBottom="34dp"
         android:text="Please pay amount:"
-        android:textSize="24sp"
-        android:id="@+id/textView3" />
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/amount_payable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="50.00"
+        android:textSize="50sp" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/amount_payable"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="127dp"
-        android:text="PAY" />
+        android:layout_marginTop="34dp"
+        android:text="PAY"
+        android:textSize="30sp" />
 
 </RelativeLayout>
