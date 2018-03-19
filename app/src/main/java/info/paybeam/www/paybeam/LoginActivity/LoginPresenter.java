@@ -20,8 +20,10 @@ public class LoginPresenter implements LoginInterface.LoginPresenter
     @Override
     public void handleAuthentication(String username, String password)
     {
-        if(username.equals("username") && password.equals("password"))
+        if(username.equals("username") && password.equals("password")) {
             loginView.showSuccess();
+            loginView.showHomeScreen();
+        }
         else
             loginView.showFailure();
     }

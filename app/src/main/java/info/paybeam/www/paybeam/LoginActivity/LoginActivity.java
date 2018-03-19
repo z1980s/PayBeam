@@ -1,11 +1,17 @@
 package info.paybeam.www.paybeam.LoginActivity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import android.widget.Button;
+import android.widget.EditText;
+
+import info.paybeam.www.paybeam.MainActivity.MainActivity;
+import info.paybeam.www.paybeam.MenuActivity.MenuActivity;
 import info.paybeam.www.paybeam.R;
 import info.paybeam.www.paybeam.databinding.LoginActivityBinding;
 
@@ -46,6 +52,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.L
 
     public void showHomeScreen()
     {
+        //Intent to show the home screen
 
+        //FOR TEST
+        Intent MenuScreen = new Intent(LoginActivity.this, MenuActivity.class);
+        startActivity(MenuScreen);
     }
 }
