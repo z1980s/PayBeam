@@ -46,7 +46,7 @@
         <item name="android:layout_height">@dimen/app_logo_height</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_margin">@dimen/activity_margin</item>
-        <item name="android:src">@android:drawable/sym_def_app_icon</item>
+        <item name="android:src">@android:mipmap/sym_def_app_icon</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -4,4 +4,8 @@
     <string name="create_account">Create Account</string>
     <string name="title_activity_create_account">CreateAccountActivity</string>
     <string name="title_activity_authentication">AuthenticationActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="submit">submit</string>
 </resources>

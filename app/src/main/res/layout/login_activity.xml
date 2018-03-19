@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="presenter"
+            type="info.paybeam.www.paybeam.LoginActivity.LoginPresenter"/>
+    </data>
+
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LinearLayout"
+    tools:context="info.paybeam.www.paybeam.LoginActivity.LoginActivity">
+
+    <ImageView
+        android:textSize="20dp"
+        style="@style/AppLogo"
+        android:src="@android:mipmap/sym_def_app_icon"/>
+
+    <EditText
+        style="@style/MatchWrap"
+        android:id="@+id/username"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="50dp"
+        android:hint="@string/username" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <Button
+        style="@style/Button"
+        android:layout_marginTop="50dp"
+        android:text="@string/submit"
+        android:onClick="@{presenter::handleSubmitButtonClick}"/>
+
+</LinearLayout>
+</layout>

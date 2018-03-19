@@ -1,10 +1,12 @@
 package info.paybeam.www.paybeam.MainActivity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import info.paybeam.www.paybeam.LoginActivity.LoginActivity;
 import info.paybeam.www.paybeam.R;
 import info.paybeam.www.paybeam.databinding.MainActivityBinding;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
     public void showLoginScreen()
     {
         Toast.makeText(this, "Bringing user to Login Screen", Toast.LENGTH_SHORT).show();
+        Intent loginScreen = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(loginScreen);
     }
 
     @Override
