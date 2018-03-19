@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="info.paybeam.www.paybeam.MainActivity.MainPresenter"/>
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        style="@style/LinearLayout">
+
+        <ImageView style="@style/AppLogo" />
+
+        <Button
+            style="@style/Button.LogIn"
+            android:onClick="@{presenter::handleLoginButtonClick}" />
+
+        <Button
+            style="@style/Button.CreateAccount"
+            android:onClick="@{presenter::handleCreateAccountButtonClick}" />
+
+
+    </LinearLayout>
+</layout>

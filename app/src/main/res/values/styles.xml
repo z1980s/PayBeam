@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@android:color/darker_gray</item>
+    </style>
+
+    <style name="LinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/activity_padding</item>
+    </style>
+
+    <style name="MatchWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MatchMatch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Button" parent="MatchWrap">
+        <item name="android:layout_marginBottom">@dimen/button_margin</item>
+        <item name="android:layout_marginTop">@dimen/button_margin</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Button.LogIn">
+        <item name="android:text">@string/log_in</item>
+    </style>
+
+    <style name="Button.CreateAccount">
+        <item name="android:text">@string/create_account</item>
+    </style>
+
+    <style name="AppLogo">
+        <item name="android:layout_width">@dimen/app_logo_width</item>
+        <item name="android:layout_height">@dimen/app_logo_height</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_margin">@dimen/activity_margin</item>
+        <item name="android:src">@android:drawable/sym_def_app_icon</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>
