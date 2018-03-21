@@ -95,7 +95,7 @@ public class PaymentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ConnectionModule cm = new ConnectionModule();
-                cm.start();
+                cm.execute();
                 /*
                 Change to transaction fragment on button click
                  */

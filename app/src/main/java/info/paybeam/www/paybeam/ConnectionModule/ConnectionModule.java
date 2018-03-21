@@ -1,17 +1,22 @@
 package info.paybeam.www.paybeam.ConnectionModule;
 
 
-import java.net.*;
-import java.io.*;
+import android.os.AsyncTask;
 
-public class ConnectionModule {
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
-    public void start()
-    {
+public class ConnectionModule extends AsyncTask<Void, Void, Void> {
+
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+
         try {
             System.out.println("Client Started");
             //create socket to server
-            Socket clientSocket = new Socket( "182.55.236.211" , 3333);
+            Socket clientSocket = new Socket("182.55.236.211", 3333);
 
             //119.56.106.139
             //10.33.88.155
@@ -29,7 +34,7 @@ public class ConnectionModule {
 
             //wait for reply
             Message reply = null;
-            reply = (Message)ois.readObject();
+            reply = (Message) ois.readObject();
 
             if (reply.getHeader().equals("Reply")) {
                 System.out.println("Got '" + reply.getData() + "'");
@@ -41,13 +46,8 @@ public class ConnectionModule {
             clientSocket.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+            e.printStackTrace();}
+        return null;
     }
 
 }
