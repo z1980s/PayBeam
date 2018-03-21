@@ -1,16 +1,22 @@
 package info.paybeam.www.paybeam.MenuActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ExpandableListView;
+import android.widget.*;
+import android.content.*;
 
+import info.paybeam.www.paybeam.ConnectionModule.ConnectionModule;
 import info.paybeam.www.paybeam.R;
 
 /**
@@ -33,6 +39,8 @@ public class PaymentFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
 
     public PaymentFragment() {
         // Required empty public constructor
@@ -79,9 +87,31 @@ public class PaymentFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, mParam1);
         Log.d(TAG, mParam2);
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment, container, false);
+
+
+        View v = inflater.inflate(R.layout.fragment_payment,container,false);
+        Button btnConnect = (Button) v.findViewById(R.id.pay_button);
+        btnConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ConnectionModule cm = new ConnectionModule();
+                cm.start();
+                /*
+                Change to transaction fragment on button click
+                 */
+                /*TransactionFragment transactionFragment = new TransactionFragment();
+                FragmentManager manager = getFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.relativelayout_fragment,transactionFragment,transactionFragment.getTag())
+                        .commit();*/
+            }
+
+        });
+
+        return v;
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
