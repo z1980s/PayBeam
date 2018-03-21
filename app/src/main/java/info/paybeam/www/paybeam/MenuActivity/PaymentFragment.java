@@ -2,12 +2,14 @@ package info.paybeam.www.paybeam.MenuActivity;
 
 import android.content.Context;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import info.paybeam.www.paybeam.R;
 
@@ -61,6 +63,15 @@ public class PaymentFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this.getContext());
+
+        if(nfcAdapter != null &&  nfcAdapter.isEnabled())
+        {
+            Toast.makeText(this.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(this.getContext(), "NFC is disabled, please enable NFC and try again", Toast.LENGTH_SHORT).show();
     }
 
     @Override
