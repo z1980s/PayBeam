@@ -1,22 +1,23 @@
 package info.paybeam.www.paybeam.MenuActivity;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 import android.widget.*;
-import android.content.*;
+import android.app.*;
+import android.util.*;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import info.paybeam.www.paybeam.ConnectionModule.ConnectionModule;
+import info.paybeam.www.paybeam.PaymentModule.PayNowFragment;
 import info.paybeam.www.paybeam.R;
 
 /**
@@ -87,21 +88,42 @@ public class PaymentFragment extends Fragment {
             public void onClick(View view) {
                 NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
 
-                if(nfcAdapter != null &&  nfcAdapter.isEnabled())
+                if(!(nfcAdapter != null &&  nfcAdapter.isEnabled()))
                 {
                     Toast.makeText(view.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
 
                     ConnectionModule cm = new ConnectionModule();
                     cm.execute();
 
+                    final ProgressDialog dialog = ProgressDialog.show(view.getContext(), "",
+                            "Loading. Please wait...", true);
+
+                    final Timer t = new Timer();
+                    t.schedule(new TimerTask() {
+                        public void run() {
+                            dialog.dismiss(); // when the task active then close the dialog
+                            t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+                        }
+                    }, 3000);
+                    //dialog.dismiss();
+
                     /*
-                    Change to transaction fragment on button click
-                     */
-                    /*TransactionFragment transactionFragment = new TransactionFragment();
+                    Change to payNow fragment on button click
+                    */
+                    PayNowFragment payNowFragment = new PayNowFragment();
                     FragmentManager manager = getFragmentManager();
                     manager.beginTransaction()
-                    .replace(R.id.relativelayout_fragment,transactionFragment,transactionFragment.getTag())
-                    .commit();*/
+                    .replace(R.id.relativelayout_fragment,payNowFragment,payNowFragment.getTag())
+                    .commit();
+
+
+                    /*
+                    FaqFragment faqFragment = new FaqFragment();
+                    FragmentManager manager = getFragmentManager();
+                    manager.beginTransaction()
+                            .replace(R.id.relativelayout_fragment,faqFragment,faqFragment.getTag())
+                            .commit();
+                    */
                 }
                 else
                 {
