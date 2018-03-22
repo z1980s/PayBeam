@@ -40,8 +40,6 @@ public class PaymentFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
-
     public PaymentFragment() {
         // Required empty public constructor
     }
@@ -72,14 +70,7 @@ public class PaymentFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this.getContext());
 
-        if(nfcAdapter != null &&  nfcAdapter.isEnabled())
-        {
-            Toast.makeText(this.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
-        }
-        else
-            Toast.makeText(this.getContext(), "NFC is disabled, please enable NFC and try again", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -94,18 +85,29 @@ public class PaymentFragment extends Fragment {
         btnConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ConnectionModule cm = new ConnectionModule();
-                cm.execute();
-                /*
-                Change to transaction fragment on button click
-                 */
-                /*TransactionFragment transactionFragment = new TransactionFragment();
-                FragmentManager manager = getFragmentManager();
-                manager.beginTransaction()
-                        .replace(R.id.relativelayout_fragment,transactionFragment,transactionFragment.getTag())
-                        .commit();*/
-            }
+                NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
 
+                if(nfcAdapter != null &&  nfcAdapter.isEnabled())
+                {
+                    Toast.makeText(view.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
+
+                    ConnectionModule cm = new ConnectionModule();
+                    cm.execute();
+
+                    /*
+                    Change to transaction fragment on button click
+                     */
+                    /*TransactionFragment transactionFragment = new TransactionFragment();
+                    FragmentManager manager = getFragmentManager();
+                    manager.beginTransaction()
+                    .replace(R.id.relativelayout_fragment,transactionFragment,transactionFragment.getTag())
+                    .commit();*/
+                }
+                else
+                {
+                    Toast.makeText(view.getContext(), "NFC is disabled, please enable NFC and try again", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         return v;
