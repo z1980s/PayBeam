@@ -1,5 +1,6 @@
 package info.paybeam.www.paybeam.MenuActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import info.paybeam.www.paybeam.ConnectionModule.ConnectionModule;
+import info.paybeam.www.paybeam.PaymentModule.P2PActivity;
 import info.paybeam.www.paybeam.PaymentModule.PayNowFragment;
 import info.paybeam.www.paybeam.R;
 
@@ -82,8 +84,9 @@ public class PaymentFragment extends Fragment {
 
 
         View v = inflater.inflate(R.layout.fragment_payment,container,false);
-        Button btnConnect = (Button) v.findViewById(R.id.pay_button);
-        btnConnect.setOnClickListener(new View.OnClickListener() {
+
+        Button btnp2r = (Button) v.findViewById(R.id.p2r_button);
+        btnp2r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
@@ -111,7 +114,7 @@ public class PaymentFragment extends Fragment {
                     //dialog.dismiss();
 
                     /*
-                    Change to payNow fragment on button click
+                    Change to payNow fragment on p2r button click
                     */
                     PayNowFragment payNowFragment = new PayNowFragment();
                     FragmentManager manager = getFragmentManager();
@@ -119,6 +122,43 @@ public class PaymentFragment extends Fragment {
                     .replace(R.id.relativelayout_fragment,payNowFragment,payNowFragment.getTag())
                     .commit();
 
+
+                    /*
+                    FaqFragment faqFragment = new FaqFragment();
+                    FragmentManager manager = getFragmentManager();
+                    manager.beginTransaction()
+                            .replace(R.id.relativelayout_fragment,faqFragment,faqFragment.getTag())
+                            .commit();
+                    */
+                }
+                else
+                {
+                    Toast.makeText(view.getContext(), "NFC is disabled, please enable NFC and try again", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        //View v = inflater.inflate(R.layout.fragment_payment,container,false);
+        Button btnp2p = (Button) v.findViewById(R.id.p2p_button);
+        btnp2p.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
+
+                if(nfcAdapter != null &&  nfcAdapter.isEnabled())
+                {
+                    Toast.makeText(view.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
+
+
+
+                    /*
+                    Change to P2P Activity on p2p button click
+                    */
+
+                    Intent in = new Intent(getActivity(), P2PActivity.class);
+                    //in.putExtra("some","some data");
+                    startActivity(in);
 
                     /*
                     FaqFragment faqFragment = new FaqFragment();
