@@ -9,6 +9,7 @@ import java.net.Socket;
 
 public class ConnectionModule extends AsyncTask<Void, Void, Void> {
 
+    private String msg = "";
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -35,7 +36,7 @@ public class ConnectionModule extends AsyncTask<Void, Void, Void> {
             //wait for reply
             Message reply = null;
             reply = (Message) ois.readObject();
-
+            msg = (Message) ois.readObject();
             if (reply.getHeader().equals("Reply")) {
                 System.out.println("Got '" + reply.getData() + "'");
             }
@@ -50,4 +51,9 @@ public class ConnectionModule extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+
+    public String getMsg()
+    {
+        return msg;
+    }
 }

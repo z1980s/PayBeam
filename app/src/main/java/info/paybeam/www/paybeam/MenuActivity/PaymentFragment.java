@@ -88,15 +88,18 @@ public class PaymentFragment extends Fragment {
             public void onClick(View view) {
                 NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
 
-                if(!(nfcAdapter != null &&  nfcAdapter.isEnabled()))
+                if(nfcAdapter != null &&  nfcAdapter.isEnabled())
                 {
                     Toast.makeText(view.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
 
                     ConnectionModule cm = new ConnectionModule();
                     cm.execute();
+                    String msg = cm.getMsg();
+
+                    Toast.makeText(view.getContext(), "Message from server:" + msg, Toast.LENGTH_SHORT).show();
 
                     final ProgressDialog dialog = ProgressDialog.show(view.getContext(), "",
-                            "Loading. Please wait...", true);
+                            "Making Payment. Please wait...", true);
 
                     final Timer t = new Timer();
                     t.schedule(new TimerTask() {
