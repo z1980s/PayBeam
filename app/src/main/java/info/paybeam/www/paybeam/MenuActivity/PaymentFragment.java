@@ -157,7 +157,8 @@ public class PaymentFragment extends Fragment {
                     */
 
                     Intent in = new Intent(getActivity(), P2PActivity.class);
-                    //in.putExtra("some","some data");
+                    //in.putExtra("Nfc Adapter", String.valueOf(nfcAdapter));
+                    in.setAction(NfcAdapter.ACTION_NDEF_DISCOVERED);
                     startActivity(in);
 
                     /*

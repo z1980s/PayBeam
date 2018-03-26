@@ -11,6 +11,7 @@ package info.paybeam.www.paybeam.PaymentModule;
     import android.os.Parcelable;
     import android.support.annotation.NonNull;
     import android.support.v7.app.AppCompatActivity;
+    import android.util.Log;
     import android.view.View;
     import android.widget.Button;
     import android.widget.EditText;
@@ -178,7 +179,6 @@ public class P2PActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_p2_p);
 
-
         //Check if NFC is available on device
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if(mNfcAdapter != null) {
@@ -202,7 +202,7 @@ public class P2PActivity extends Activity
         btnAddMessage.setText("Add Message");
         updateTextViews();
 
-        if (getIntent().getAction().equals(NfcAdapter.ACTION_NDEF_DISCOVERED)) {
+        if (this.getIntent().getAction().equals(NfcAdapter.ACTION_NDEF_DISCOVERED)) {
             handleNfcIntent(getIntent());
         }
     }
