@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PayBeamGit.iml" filepath="$PROJECT_DIR$/PayBeamGit.iml" />
       <module fileurl="file://$PROJECT_DIR$/PayBeamZico.iml" filepath="$PROJECT_DIR$/PayBeamZico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PayBeam.iml" filepath="$PROJECT_DIR$/PayBeam.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

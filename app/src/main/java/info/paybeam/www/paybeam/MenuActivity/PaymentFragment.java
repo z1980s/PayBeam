@@ -118,6 +118,7 @@ public class PaymentFragment extends Fragment {
                     /*
                     Change to payNow fragment on p2r button click
                     */
+
                     PayNowFragment payNowFragment = new PayNowFragment();
                     FragmentManager manager = getFragmentManager();
                     manager.beginTransaction()
