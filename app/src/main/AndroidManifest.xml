@@ -65,7 +65,6 @@
                 android:resource="@xml/aid_list"/>
         </service>
         <!-- END_INCLUDE(CardEmulationManifest) -->
-        <activity android:name=".AddCard.AddCardActivity"></activity>
     </application>
 
 </manifest>
