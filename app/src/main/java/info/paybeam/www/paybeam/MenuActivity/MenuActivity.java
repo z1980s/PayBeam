@@ -1,5 +1,6 @@
 package info.paybeam.www.paybeam.MenuActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 import info.paybeam.www.paybeam.R;
 
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PaymentFragment.OnFragmentInteractionListener{
+
+    String myString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +99,12 @@ public class MenuActivity extends AppCompatActivity
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_fragment, transactionFragment, transactionFragment.getTag()).commit();
 
+        } else if (id == R.id.nav_profile) {
+            Toast.makeText(this,"This is transactions",Toast.LENGTH_SHORT).show();
+            ProfileFragment profileFragment = new ProfileFragment().newInstance("profile1", "profile2");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_fragment, profileFragment, profileFragment.getTag()).commit();
+
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this,"This is settings",Toast.LENGTH_SHORT).show();
             SettingsFragment settingsFragment = new SettingsFragment().newInstance("settings1", "settings2");
@@ -109,7 +118,7 @@ public class MenuActivity extends AppCompatActivity
             manager.beginTransaction().replace(R.id.relativelayout_fragment, faqFragment, faqFragment.getTag()).commit();
 
         } else if (id == R.id.nav_aboutUs) {
-            Toast.makeText(this,"This is aboutus",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"This is about us",Toast.LENGTH_SHORT).show();
             AboutFragment aboutFragment = new AboutFragment().newInstance("about1", "about2");
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_fragment, aboutFragment, aboutFragment.getTag()).commit();
@@ -119,5 +128,11 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(String string) {
+        this.myString = string;
+        Toast.makeText(this,string,Toast.LENGTH_SHORT).show();
     }
 }

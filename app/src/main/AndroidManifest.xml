@@ -17,13 +17,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity.MainActivity">
 
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.cooltechworks.creditcarddesign.CardEditActivity"
+            android:screenOrientation="portrait"/>
+
+
         <activity android:name=".LoginActivity.LoginActivity" />
         <activity
             android:name=".MenuActivity.MenuActivity"
@@ -34,10 +38,11 @@
         <activity android:name=".PaymentModule.P2PActivity">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddCard.AddCardActivity"></activity>
     </application>
 
 </manifest>

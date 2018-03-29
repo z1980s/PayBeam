@@ -1,5 +1,6 @@
 package info.paybeam.www.paybeam.MenuActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
@@ -113,6 +114,7 @@ public class PaymentFragment extends Fragment {
                     }, 3000);
                     //dialog.dismiss();
 
+                    mListener.onFragmentInteraction("sent hello");
                     /*
                     Change to payNow fragment on p2r button click
                     */
@@ -182,13 +184,13 @@ public class PaymentFragment extends Fragment {
 
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed(String string) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction(string);
         }
     }
 
-    /*@Override
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -203,7 +205,7 @@ public class PaymentFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }*/
+    }
 
     /**
      * This interface must be implemented by activities that contain this
@@ -217,6 +219,6 @@ public class PaymentFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(String string);
     }
 }
