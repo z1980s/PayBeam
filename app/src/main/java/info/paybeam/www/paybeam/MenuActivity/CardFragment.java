@@ -88,7 +88,8 @@ public class CardFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
 
 
-        final View actionB = view.findViewById(R.id.action_b);
+        final View actionB = view.findViewById(R.id.add_card);
+
 
         //FloatingActionButton actionC = new FloatingActionButton(view.getContext());
 
@@ -101,49 +102,40 @@ public class CardFragment extends Fragment {
                 Intent in = new Intent(getActivity(), AddCardActivity.class);
                 startActivity(in);
                 */
-                Intent intent = new Intent(getActivity(), CardEditActivity.class);
+
+                cardContainer = getView().findViewById(R.id.card_container);
+
+                Intent intent = new Intent(getContext(), CardEditActivity.class);
                 startActivityForResult(intent, CREATE_NEW_CARD);
-            }
-        });
 
-        final View actionC = view.findViewById(R.id.action_c);
-
-        //FloatingActionButton actionC = new FloatingActionButton(view.getContext());
-
-        //actionC.setTitle("Hide/Show Action above");
-        actionC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(view.getContext(),"Remove Card",Toast.LENGTH_SHORT).show();
-
+                //intent.putExtra("CardContainer", (Parcelable) cardContainer);
             }
         });
 
 
-        final FloatingActionsMenu menuMultipleActions = view.findViewById(R.id.add_card);
-        //menuMultipleActions.addButton(actionC);
-
-
-
-
-
-        /*
-
-        FloatingActionButton fab = view.findViewById(R.id.add_card);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
 
         return view;
 
-
     }
-/*(
+
+    private void populate() {
+        CreditCardView sampleCreditCardView = new CreditCardView(getActivity());
+
+        String name = "Glarence Zhao";
+        String cvv = "420";
+        String expiry = "01/18";
+        String cardNumber = "4242424242424242";
+
+        sampleCreditCardView.setCVV(cvv);
+        sampleCreditCardView.setCardHolderName(name);
+        sampleCreditCardView.setCardExpiry(expiry);
+        sampleCreditCardView.setCardNumber(cardNumber);
+
+        cardContainer.addView(sampleCreditCardView);
+        int index = cardContainer.getChildCount() - 1;
+        addCardListener(index, sampleCreditCardView);
+    }
+
     private void addCardListener(final int index, CreditCardView creditCardView) {
         creditCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,11 +161,9 @@ public class CardFragment extends Fragment {
         });
     }
 
-
-
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
 
-        if (resultCode == RESULT_OK) {
+        if (resultCode == getActivity().RESULT_OK) {
 //            Debug.printToast("Result Code is OK", getApplicationContext());
 
             String name = data.getStringExtra(CreditCardUtils.EXTRA_CARD_HOLDER_NAME);
@@ -183,7 +173,7 @@ public class CardFragment extends Fragment {
 
             if (reqCode == CREATE_NEW_CARD) {
 
-                CreditCardView creditCardView = new CreditCardView(this);
+                CreditCardView creditCardView = new CreditCardView(getActivity());
 
                 creditCardView.setCVV(cvv);
                 creditCardView.setCardHolderName(name);
@@ -207,7 +197,6 @@ public class CardFragment extends Fragment {
         }
 
     }
-*/
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
