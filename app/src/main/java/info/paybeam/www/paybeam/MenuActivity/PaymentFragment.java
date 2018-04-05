@@ -86,8 +86,8 @@ public class PaymentFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_payment,container,false);
 
-        Button btnp2r = (Button) v.findViewById(R.id.p2r_button);
-        btnp2r.setOnClickListener(new View.OnClickListener() {
+        Button btnp2s = (Button) v.findViewById(R.id.p2s_button);
+        btnp2s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
@@ -178,6 +178,28 @@ public class PaymentFragment extends Fragment {
                 }
             }
         });
+
+
+        Button btnp2r = (Button) v.findViewById(R.id.p2r_button);
+        btnp2r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(view.getContext());
+
+                if(nfcAdapter != null &&  nfcAdapter.isEnabled())
+                {
+                   /*
+                   Put Payment to reader stuff here
+                    */
+                    Toast.makeText(view.getContext(), "NFC is enabled", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(view.getContext(), "NFC is disabled, please enable NFC and try again", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
         return v;
     }

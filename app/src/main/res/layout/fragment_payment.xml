@@ -17,6 +17,16 @@
         android:text="Select Payment Card"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/p2r_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="140dp"
+        android:text="Phone to Reader" />
 
     <Button
         android:id="@+id/p2p_button"
@@ -30,7 +40,7 @@
         android:text="Phone to phone" />
 
     <Button
-        android:id="@+id/p2r_button"
+        android:id="@+id/p2s_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -38,7 +48,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
-        android:text="Phone to reader" />
+        android:text="Phone to Server" />
 
     <ImageView
         android:id="@+id/imageView2"
