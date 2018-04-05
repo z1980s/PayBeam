@@ -28,7 +28,7 @@ public class CardInfo {
      private static final Object sAccountLock = new Object();
 
      public static void SetAccount(Context c, String s) {
-         sAccount = "asdasdsdasda";
+         sAccount = "DaiWei's MasterCard Number";
          /*
          synchronized(sAccountLock) {
              Log.i(TAG, "Setting account number: " + s);
